@@ -1,0 +1,30 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Installing dependencies...
+      - apt-get update -y
+      - apt-get install -y nginx
+  pre_build:
+    commands:
+      - echo Starting pre-build phase...
+      - echo Checking if Nginx is installed...
+      - nginx -v
+  build:
+    commands:
+      - echo Build Started on `date` 
+      - echo Configuring Nginx...
+      - cp index.html /var/www/html/
+
+  post_build:
+    commands:
+      - echo Build completed successfully.
+
+artifacts:
+  files:
+    - '**/*'
+
+#cache:
+#  paths:
+#    - '/var/cache/apt/**/*'
