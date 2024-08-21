@@ -1,0 +1,29 @@
+version: 0.0
+
+os: linux
+files:
+  # Specify the source files from the build artifacts to be deployed
+  - source: /
+    destination: /var/www/html/index.html
+
+hooks:
+  AfterInstall:
+    # Commands to run after the application is installed
+    # Use this hook to start or configure services
+    - location: scripts/install_nginx.sh
+      timeout: 300
+      runas: root
+
+  ApplicationStart:
+    # Commands to run to start the application
+    # Since you're deploying Nginx, you might want to ensure it's running
+    - location: scripts/start_nginx.sh
+      timeout: 300
+      runas: root
+
+  #ApplicationStop:
+    # Commands to run to stop the application
+   # - location: scripts/application_stop.sh
+    #  timeout: 300
+    #  runas: root
+
