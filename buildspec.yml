@@ -23,8 +23,8 @@ phases:
 
 artifacts:
   files:
-#    - '**/*'
-    - /var/www/html/index.html
+    - '**/*'
+#    - /var/www/html/index.html
 #cache:
 #  paths:
 #    - '/var/cache/apt/**/*'
